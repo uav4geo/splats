@@ -743,8 +743,12 @@ async function main() {
         viewMatrix = JSON.parse(decodeURIComponent(location.hash.slice(1)));
         carousel = false;
     } catch (err) {}
-    const url = params.get("url") || "banana.splat";
-    
+    const url = new URL(
+        // "nike.splat",
+        // location.href,
+        params.get("url") || "banana.splat",
+        "https://raw.githubusercontent.com/uav4geo/splats/main/",
+    );
     const req = await fetch(url, {
         mode: "cors", // no-cors, *cors, same-origin
         credentials: "omit", // include, *same-origin, omit
